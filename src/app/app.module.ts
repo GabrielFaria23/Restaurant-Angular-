@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes'
@@ -38,7 +38,9 @@ import { ShoppingCartService } from './restaurants/restaurant-detail/shopping-ca
     HttpModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [ RestaurantsService, ShoppingCartService],
+  providers: [ RestaurantsService, ShoppingCartService, 
+    {provide: LOCALE_ID, useValue: 'pt-BR'} //sempre que alguem pedir o valor LOCALE_ID informe pt-BR isso é apenas para exibir dinheiro na moeda brasileira
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
