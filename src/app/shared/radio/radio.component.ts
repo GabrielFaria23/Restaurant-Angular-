@@ -13,6 +13,8 @@ import { RadioOption } from './radio.Option.model';
     }
   ]
 })
+
+//providers + ControlValueAccessor utilizados para atribuir o valor do radio button ao formulario
 export class RadioComponent implements OnInit, ControlValueAccessor {
 
   @Input() options: RadioOption[]
