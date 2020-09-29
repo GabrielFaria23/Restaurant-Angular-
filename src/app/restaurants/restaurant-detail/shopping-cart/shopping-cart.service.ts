@@ -14,7 +14,6 @@ export class ShoppingCartService {
         }else{
             this.items.push(new CartItem(item))
         }
-        console.log(this.items.length)
     }
 
     removeItem(item:any){
@@ -29,7 +28,6 @@ export class ShoppingCartService {
 
     increaseQty(item: CartItem){
         item.quantity = item.quantity + 1
-        console.log("entrei")
     }
 
     decreaseQty(item: CartItem){
