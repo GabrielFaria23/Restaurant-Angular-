@@ -9,7 +9,7 @@ export class OrderItemsComponent implements OnInit {
 
   @Input() items: CartItem[]
 
-  @Output() increseQty = new EventEmitter<CartItem>()
+  @Output() increaseQty = new EventEmitter<CartItem>()
   @Output() decreaseQty = new EventEmitter<CartItem>()
   @Output() remove = new EventEmitter<CartItem>()
 
@@ -19,7 +19,7 @@ export class OrderItemsComponent implements OnInit {
   }
 
   emitIncreaseQty(item: CartItem){
-    this.increseQty.emit(item)
+    this.increaseQty.emit(item)
   }
 
   emitDecreaseQty(item: CartItem){
