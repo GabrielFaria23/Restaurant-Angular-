@@ -24,45 +24,49 @@
           </div>      
           
           <div class="row">
-              <div class="col-xs-12">
+              <div class="col-xs-12 col-sm-9">
                 <p class="lend">Seus Dados: </p>
               </div>
-            <div class="col-sm-6 col-xs-12">
-              <mt-input-container errorMessage="Campo Obrigatório e com 5 caracteres" label="Nome">
-                <input class="form-control" formControlName="name" placeholder="Nome" autocomplete="off">
-              </mt-input-container>
-            </div>
-            <div class="col-sm-3 col-xs-12">
-              <mt-input-container errorMessage="E-mail inválido" label="E-mail">
-                <input class="form-control" formControlName="email" placeholder="E-mail" autocomplete="off">
-              </mt-input-container>
-            </div>
-            <div class="col-sm-3 col-xs-12">
-              <mt-input-container errorMessage="E-mail inválido" label="Confirmação do E-mail">
-                <input class="form-control" formControlName="emailConfirmation" placeholder="Confirmação do E-mail" autocomplete="off">
-              </mt-input-container>
-            </div>
-          </div>
+              <div class="col-sm-3 col-xs-12">
+                <span class="help-block pull-right has-error-block" *ngIf="orderForm.hasError('emailsNotMatch')"><i class="fa fa-remove"></i> Email-s não conferem</span>
+              </div>
 
-          <div class="row">
-            <div class="col-xs-12">
-              <p class="lead">Endereço de Entrega:</p>
+              <div class="col-sm-6 col-xs-12">
+                <mt-input-container errorMessage="Campo Obrigatório e com 5 caracteres" label="Nome">
+                  <input class="form-control" formControlName="name" placeholder="Nome" autocomplete="off">
+                </mt-input-container>
+              </div>
+              <div class="col-sm-3 col-xs-12">
+                <mt-input-container errorMessage="E-mail inválido" label="E-mail">
+                  <input class="form-control" formControlName="email" placeholder="E-mail" autocomplete="off">
+                </mt-input-container>
+              </div>
+              <div class="col-sm-3 col-xs-12">
+                <mt-input-container errorMessage="E-mail inválido" label="Confirmação do E-mail">
+                  <input class="form-control" formControlName="emailConfirmation" placeholder="Confirmação do E-mail" autocomplete="off">
+                </mt-input-container>
+              </div>
             </div>
-            <div class="col-sm-6 col-xs-12">
-              <mt-input-container errorMessage="Campo Obrigatório e com 5 caracteres" label="Endereço">
-                <input class="form-control" formControlName="address" placeholder="Endereço" autocomplete="off">
-              </mt-input-container>
-            </div>
-            <div class="col-sm-3 col-xs-6">
-              <mt-input-container errorMessage="Obrigatório e somente números" label="Número">
-                <input type="text" class="form-control" formControlName="number" placeholder="Número" pattern="^[0-9]*$" autocomplete="off">
-              </mt-input-container>
-            </div>
-            <div class="col-sm-3 col-xs-6">
-              <mt-input-container errorMessage="" label="Complemento">
-                <input type="text" class="form-control" formControlName="optionalAddress" placeholder="Complemento" autocomplete="off">
-              </mt-input-container>
-            </div>
+
+            <div class="row">
+              <div class="col-xs-12">
+                <p class="lead">Endereço de Entrega:</p>
+              </div>
+              <div class="col-sm-6 col-xs-12">
+                <mt-input-container errorMessage="Campo Obrigatório e com 5 caracteres" label="Endereço">
+                  <input class="form-control" formControlName="address" placeholder="Endereço" autocomplete="off">
+                </mt-input-container>
+              </div>
+              <div class="col-sm-3 col-xs-6">
+                <mt-input-container errorMessage="Obrigatório e somente números" label="Número">
+                  <input type="text" class="form-control" formControlName="number" placeholder="Número" pattern="^[0-9]*$" autocomplete="off">
+                </mt-input-container>
+              </div>
+              <div class="col-sm-3 col-xs-6">
+                <mt-input-container errorMessage="" label="Complemento">
+                  <input type="text" class="form-control" formControlName="optionalAddress" placeholder="Complemento" autocomplete="off">
+                </mt-input-container>
+              </div>
             <!-- /.col -->
           </div>
           <!-- /.row -->
