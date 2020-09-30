@@ -10,34 +10,57 @@
 
         <!--atributos de um ngForm -> valid|invalid, pristine|dirty, untouched|touched-->
 
-        <form #form="ngForm" novalidate> <!--novalidate = o angular vai tratar o formulario, com isso, a aplicação vai ser exibida da mesma maneira em qualquer navegador-->
+        <!--<form #form="ngForm" novalidate>  #form="ngForm" se usa quando esta trabalhando com templates form-->
+          <!--novalidate = o angular vai tratar o formulario, com isso, a aplicação vai ser exibida da mesma maneira em qualquer navegador-->
           <!-- Com ng Form é possivel verificar se o formulario é valido, se ja foi tocado e diversas outras informações
           PARA UTILIZAÇÃO DO MESMO É NECESSARIO DECLARAR O MODULO FORMSMODULE NO MODULO RAIZ DO PROJETO-->
+        <form [formGroup]="orderForm" novalidate>
           <div class="row">
             <div class="col-xs-12">
               <h2 class="page-header">
                 <i class="fa fa-shopping-cart"></i> Finalize o seu pedido
               </h2>
             </div>
-          </div>                
+          </div>      
+          
+          <div class="row">
+              <div class="col-xs-12">
+                <p class="lend">Seus Dados: </p>
+              </div>
+            <div class="col-sm-6 col-xs-12">
+              <mt-input-container errorMessage="Campo Obrigatório e com 5 caracteres" label="Nome">
+                <input class="form-control" formControlName="name" placeholder="Nome" autocomplete="off">
+              </mt-input-container>
+            </div>
+            <div class="col-sm-3 col-xs-12">
+              <mt-input-container errorMessage="E-mail inválido" label="E-mail">
+                <input class="form-control" formControlName="email" placeholder="E-mail" autocomplete="off">
+              </mt-input-container>
+            </div>
+            <div class="col-sm-3 col-xs-12">
+              <mt-input-container errorMessage="E-mail inválido" label="Confirmação do E-mail">
+                <input class="form-control" formControlName="emailConfirmation" placeholder="Confirmação do E-mail" autocomplete="off">
+              </mt-input-container>
+            </div>
+          </div>
 
-          <div class="row invoice-info">
+          <div class="row">
             <div class="col-xs-12">
               <p class="lead">Endereço de Entrega:</p>
             </div>
             <div class="col-sm-6 col-xs-12">
               <mt-input-container errorMessage="Campo Obrigatório e com 5 caracteres" label="Endereço">
-                <input class="form-control" name="adress" ngModel required minlength="5" placeholder="Endereço" autocomplete="off">
+                <input class="form-control" formControlName="address" placeholder="Endereço" autocomplete="off">
               </mt-input-container>
             </div>
             <div class="col-sm-3 col-xs-6">
               <mt-input-container errorMessage="Obrigatório e somente números" label="Número">
-                <input type="text" class="form-control" name="number" required ngModel placeholder="Número" pattern="^[0-9]*$" autocomplete="off">
+                <input type="text" class="form-control" formControlName="number" placeholder="Número" pattern="^[0-9]*$" autocomplete="off">
               </mt-input-container>
             </div>
             <div class="col-sm-3 col-xs-6">
               <mt-input-container errorMessage="" label="Complemento">
-                <input type="text" class="form-control" name="optionalAddress" ngModel placeholder="Complemento" autocomplete="off">
+                <input type="text" class="form-control" formControlName="optionalAddress" placeholder="Complemento" autocomplete="off">
               </mt-input-container>
             </div>
             <!-- /.col -->
@@ -64,7 +87,7 @@
               <p class="lead">Formas de Pagamento:</p>
 
                 <div class="form-group">
-                   <mt-radio [options]="paymentOptions" name="paymentOption" ngModel required></mt-radio>
+                   <mt-radio [options]="paymentOptions" formControlName="paymentOption" ></mt-radio>
                 </div>
 
             </div>
@@ -86,9 +109,9 @@
         <div class="row">
           <div class="col-xs-12">
             <button 
-              (click)="checkOrder(form.value)"
+              (click)="checkOrder(orderForm.value)"
               class="btn btn-success pull-right" 
-              [disabled]="!form.valid || cartItems().length === 0">
+              [disabled]="!orderForm.valid || cartItems().length === 0">
               <i class="fa fa-credit-card"></i> Concluir Pedido
             </button>
           </div>
