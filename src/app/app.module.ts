@@ -16,11 +16,7 @@ import { ShoppingCartComponent } from './restaurants/restaurant-detail/shopping-
 import { MenuItemComponent } from './restaurants/restaurant-detail/menu-item/menu-item.component';
 import { ReviewsComponent } from './restaurants/restaurant-detail/reviews/reviews.component';
 import { ShoppingCartService } from './restaurants/restaurant-detail/shopping-cart/shopping-cart.service';
-import { OrderComponent } from '../app/order/order.component'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { OrderItemsComponent } from './order/order-items/order-items.component';
 import { OrderService } from './order/order.service';
-import { DeliveryCostsComponent } from './order/delivery-costs/delivery-costs.component';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { SharedModule } from './shared/shared.module';
 
@@ -37,9 +33,6 @@ import { SharedModule } from './shared/shared.module';
     ShoppingCartComponent,
     MenuItemComponent,
     ReviewsComponent,
-    OrderComponent,
-    OrderItemsComponent,
-    DeliveryCostsComponent,
     OrderSummaryComponent
   ],
   imports: [
