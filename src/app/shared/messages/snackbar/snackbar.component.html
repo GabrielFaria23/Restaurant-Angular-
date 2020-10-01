@@ -1,3 +1,4 @@
-<div class="snackbar">
+<button (click)="toggleSnack()"></button>
+<div class="snackbar" [@snack-visibility]="snackVisibility">
   {{message}}
 </div>
