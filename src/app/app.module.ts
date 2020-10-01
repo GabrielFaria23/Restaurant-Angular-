@@ -18,13 +18,11 @@ import { ReviewsComponent } from './restaurants/restaurant-detail/reviews/review
 import { ShoppingCartService } from './restaurants/restaurant-detail/shopping-cart/shopping-cart.service';
 import { OrderComponent } from '../app/order/order.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { InputComponent } from './shared/input/input.component';
-import { RadioComponent } from './shared/radio/radio.component';
 import { OrderItemsComponent } from './order/order-items/order-items.component';
 import { OrderService } from './order/order.service';
 import { DeliveryCostsComponent } from './order/delivery-costs/delivery-costs.component';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
-import { RatingComponent } from './rating/rating.component';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -40,18 +38,16 @@ import { RatingComponent } from './rating/rating.component';
     MenuItemComponent,
     ReviewsComponent,
     OrderComponent,
-    InputComponent,
-    RadioComponent,
     OrderItemsComponent,
     DeliveryCostsComponent,
-    OrderSummaryComponent,
-    RatingComponent
+    OrderSummaryComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    FormsModule,
-    ReactiveFormsModule,
+    //FormsModule,
+    //ReactiveFormsModule,
+    SharedModule, //Com o sharedModule não precisa mais nem do Forms nem do ReactiveForms porque o shared ja exporta esses modulos
     RouterModule.forRoot(ROUTES)
   ],
   providers: [ RestaurantsService, ShoppingCartService, OrderService,
