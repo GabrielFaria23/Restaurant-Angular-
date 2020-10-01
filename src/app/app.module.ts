@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { PreloadAllModules, RouterModule } from '@angular/router';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { ROUTES } from './app.routes'
 
 import { AppComponent } from './app.component';
@@ -34,6 +35,7 @@ import { SharedModule } from './shared/shared.module';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpModule,
     //FormsModule,
     //ReactiveFormsModule,
@@ -47,3 +49,8 @@ import { SharedModule } from './shared/shared.module';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+//instalar modulo de animações: 
+//na pasta raiz executar -> npm install --save @angular/animations@4.0.0  //numeros no fim = versão
+// depois npm install --save web-animations-js
