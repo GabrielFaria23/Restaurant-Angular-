@@ -13,4 +13,4 @@ const ROUTES: Routes = [
     declarations: [OrderComponent, OrderItemsComponent, DeliveryCostsComponent],
     imports: [SharedModule, RouterModule.forChild(ROUTES)]
 })
-export class OrderModule{}
+export class OrderModule {}
