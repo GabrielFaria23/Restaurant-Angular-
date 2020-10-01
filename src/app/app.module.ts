@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
+import { PreloadAllModules, RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes'
 
 import { AppComponent } from './app.component';
@@ -38,7 +38,7 @@ import { SharedModule } from './shared/shared.module';
     //FormsModule,
     //ReactiveFormsModule,
     SharedModule.forRoot(), //Com o sharedModule não precisa mais nem do Forms nem do ReactiveForms porque o shared ja exporta esses modulos
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})
   ],
   providers: [ //RestaurantsService, ShoppingCartService, OrderService, -> Todos os Services foram removidos porque agora todos estão no privider dentro de CoreModule
                 //isso é bom pra deixar a configuração do modulo raiz bem mais enxuta.
