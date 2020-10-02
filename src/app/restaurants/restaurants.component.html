@@ -2,17 +2,17 @@
  <section class="content-header">
   <h1>
     Todos os Restaurantes
-    <a class="search-link pull-right"><i class="fa fa-search"></i></a>
+    <a (click) = "toggleSearch()" class="search-link pull-right"><i class="fa fa-search"></i></a>
   </h1>
 
-<!-- barra de busca -->
-<div class="row">
-  <div class="col-xs-12">
-    <form>
-      <input type="text" class="form-control" placeholder="O que você está procurando?">
-    </form>
+  <!-- barra de busca -->
+  <div class="row">
+    <div class="col-xs-12 search-bar" [@toggleSearch]="searchBarState">
+      <form>
+        <input type="text" class="form-control" placeholder="O que você está procurando?">
+      </form>
+    </div>
   </div>
-</div>
 
 </section>
 
