@@ -5,6 +5,9 @@ import { Restaurant } from './restaurant/restaurant.model';
 import { RestaurantsService } from './restaurants.service' 
 import 'rxjs/add/operator/debounceTime'
 import 'rxjs/add/operator/distinctUntilChanged'
+import 'rxjs/add/operator/catch'
+import 'rxjs/add/observable/from'
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'mt-restaurants',
@@ -45,7 +48,8 @@ export class RestaurantsComponent implements OnInit {
     this.searchControl.valueChanges.debounceTime(500) //debouceTime so deixa emitir um evento caso a diferença de tempo entre 2 eventos for maior que a informada em ms
     .distinctUntilChanged() // so vai emitir outro evento se a busca por exemplo for diferente da busca feita enteriormente.
     .switchMap(searchTerm => 
-      this.restaurantsService.restaurants(searchTerm))
+      this.restaurantsService.restaurants(searchTerm)
+      .catch(error => Observable.from([])))
     .subscribe(restaurants => this.restaurants = restaurants)
 
     this.restaurantsService.restaurants()
