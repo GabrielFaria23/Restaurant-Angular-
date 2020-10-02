@@ -17,6 +17,7 @@ import { MenuItemComponent } from './restaurants/restaurant-detail/menu-item/men
 import { ReviewsComponent } from './restaurants/restaurant-detail/reviews/reviews.component';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { SharedModule } from './shared/shared.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { SharedModule } from './shared/shared.module';
     ShoppingCartComponent,
     MenuItemComponent,
     ReviewsComponent,
-    OrderSummaryComponent
+    OrderSummaryComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

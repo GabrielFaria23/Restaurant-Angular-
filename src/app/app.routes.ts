@@ -1,5 +1,6 @@
 import { Routes } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
 import { OrderSummaryComponent } from "./order-summary/order-summary.component";
 import { MenuComponent } from "./restaurants/restaurant-detail/menu/menu.component";
 import { RestaurantDetailComponent } from "./restaurants/restaurant-detail/restaurant-detail.component";
@@ -17,5 +18,9 @@ export const ROUTES: Routes = [
             {path: 'reviews', component: ReviewsComponent}
         ]},
     {path: 'order', loadChildren: './order/order.module#OrderModule'},
-    {path: 'order-summary', component: OrderSummaryComponent}
+    {path: 'order-summary', component: OrderSummaryComponent},
+    {path: '**', component: NotFoundComponent}
+
+    //a rota ** é pra caso a url informada não seja igual a nenhuma das rotas definidas, Ela sempre tem que ficar no final porque o angular adota um metodo de processamento que a
+    // a primeira rota encontrada com o nome definido vai puxar seu componenteSS
 ]
