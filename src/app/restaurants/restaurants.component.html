@@ -8,8 +8,11 @@
   <!-- barra de busca -->
   <div class="row">
     <div class="col-xs-12 search-bar" [@toggleSearch]="searchBarState">
-      <form>
-        <input type="text" class="form-control" placeholder="O que você está procurando?">
+      <form [formGroup]="searchForm">
+        <div class="form-group">
+          <input type="text" formControlName="searchControl"
+                class="form-control" placeholder="O que você está procurando?">
+        </div>
       </form>
     </div>
   </div>

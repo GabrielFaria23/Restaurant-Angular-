@@ -3,7 +3,7 @@ import { Restaurant } from './restaurant/restaurant.model';
 
 import { RESTAURANT_API } from './../../app/app.api';
 
-import { Http, Response } from '@angular/http';
+import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -16,10 +16,10 @@ export class RestaurantsService{
     
     constructor(private http: Http){}
 
-    restaurants(): Observable<Restaurant[]> {
-        return this.http.get(`${RESTAURANT_API}/restaurants`)
-            .map(response => response.json())
-            .catch(ErrorHandler.handleError)
+    restaurants(search?: string): Observable<Restaurant[]> {
+        return this.http.get(`${RESTAURANT_API}/restaurants`, {params: {q: search}}) //se utilizar um parametro tipo name: vai ter que digitar o nome inteiro pra conseguir fazer a busca 
+            .map(response => response.json())                                        //corretamente, porem se colocar um parametro generico tipo 'q:' ele vai buscar em todos os atributos
+            .catch(ErrorHandler.handleError)                                         //do restaurante tipo na descrição na categoria etc.
     }
 
     restaurantById(id: string ): Observable<Restaurant> {
