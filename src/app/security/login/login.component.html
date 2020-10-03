@@ -19,7 +19,7 @@
     <div class="row">
     <!-- /.col -->
     <div class="col-xs-offset-8 col-xs-4">
-      <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
+      <button (click)="login()" [disabled]="loginForm.invalid" type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
     </div>
     <!-- /.col -->
     </div>
