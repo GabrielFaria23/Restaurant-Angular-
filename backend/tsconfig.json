@@ -1,0 +1,6 @@
+{
+    "compileOnSave": true, //compila o arquivo de typescript para javascript sempre que salvo
+    "compilerOptions": {
+        "outDir":"dist" // deixa os arquivos compilados um diretorio abaixo do diretorio raiz
+    }
+}

@@ -13,6 +13,7 @@
   },
   "private": true,
   "dependencies": {
+    "-": "0.0.1",
     "@angular/animations": "4.3.3",
     "@angular/common": "4.3.3",
     "@angular/compiler": "4.3.3",
@@ -24,8 +25,10 @@
     "admin-lte": "2.3.11",
     "core-js": "2.4.1",
     "font-awesome": "4.7.0",
+    "g": "^2.0.1",
     "intl": "1.2.5",
     "jquery": "3.1.1",
+    "nodemon": "^2.0.4",
     "reflect-metadata": "0.1.10",
     "rxjs": "5.4.2",
     "ts-helpers": "1.1.2",
