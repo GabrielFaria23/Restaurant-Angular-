@@ -1,4 +1,4 @@
-<div class="form-group" [class.has-success]="hasSuccess()"
+<div class="form-group has-feedback" [class.has-success]="hasSuccess()"
                         [class.has-error]="hasError()"> <!--class.hass-success aplica classe css ao campo -->
   <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i> {{label}}</label>
 
@@ -6,8 +6,8 @@
 
   <!--<input type="text" class="form-control" name="adress" #iptAdress="ngModel" ngModel required minlength="5" placeholder="Endereço" autocomplete="off">-->
   <!-- PARA ASSOCIAR NGMODULE COM QUALQUER INPUT O NAME PRECISA SER INFORMADO - NGMODULE utilizado para adicionar e atualizar os valores do formulario-->
-  <span class="help-block" *ngIf="hasSuccess()"><i class="fa fa-check"></i> Ok</span>
-  <span class="help-block" *ngIf="hasError()"><i class="fa fa-remove"></i> {{errorMessage}}</span>
+  <span class="help-block" *ngIf="showTip && hasSuccess()"><i class="fa fa-check"></i> Ok</span>
+  <span class="help-block" *ngIf="showTip && hasError()"><i class="fa fa-remove"></i> {{errorMessage}}</span>
 </div>
 
 <!-- Nesse momento o form da classe order perde a referencia do iptAdress porquecausa que agora ele esta encapsulado no componente input para resolver esse problema remove o imput e 
