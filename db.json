@@ -481,6 +481,22 @@
         }
       ],
       "id": 6
+    },
+    {
+      "name": "GABRIEL NUNES COSTA FARIA",
+      "email": "gabrielfariapta01@gmail.com",
+      "emailConfirmation": "gabrielfariapta01@gmail.com",
+      "address": "Rua luiza Parreira 123",
+      "number": "111",
+      "optionalAddress": "11",
+      "paymentOption": "MON",
+      "orderItems": [
+        {
+          "quantity": 2,
+          "menuId": "cup-cake"
+        }
+      ],
+      "id": 7
     }
   ]
 }

@@ -5,13 +5,15 @@ import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/map'
 import { RESTAURANT_API } from "app/app.api";
 import { Order } from "./order.model";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { LoginService } from "app/security/login/login.service";
 
 @Injectable()
 export class OrderService {
     
     constructor(private cartService: ShoppingCartService,
-                private http: HttpClient){}
+                private http: HttpClient,
+                private loginService:LoginService){}
 
     itemsValue(): number{
         return this.cartService.total()
@@ -34,7 +36,11 @@ export class OrderService {
     }
 
     checkOrder(order: Order): Observable<string>{
-        return this.http.post<Order>(`${RESTAURANT_API}/orders`, order)
+        let headers = new HttpHeaders()
+        if(this.loginService.isLoggedIn()){
+            headers = headers.set('Authorization', `Bearer ${this.loginService.user.accessToken}`)
+        }
+        return this.http.post<Order>(`${RESTAURANT_API}/orders`, order, {headers: headers})
                     .map(order => order.id)
     }
 

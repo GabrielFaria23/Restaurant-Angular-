@@ -9,7 +9,7 @@ import { RestaurantsComponent } from "./restaurants/restaurants.component";
 import { LoginComponent } from "./security/login/login.component";
 
 export const ROUTES: Routes = [
-    {path: '', component: HomeComponent},
+    {path: '', component: LoginComponent},
     {path: 'login', component: LoginComponent},
     {path: 'about', loadChildren: './about/about.module#AboutModule' }, //load Children -> Utilizado para fazer caarregamento tardio, geralmente em componentes pouco utilizados
     {path: 'restaurants', component: RestaurantsComponent},
