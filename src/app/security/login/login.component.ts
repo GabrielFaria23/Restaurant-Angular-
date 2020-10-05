@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
       email: this.fb.control('', [Validators.required, Validators.email]),
       password: this.fb.control('', [Validators.required])
     })
-    this.navigateTo = this.activatedRoute.snapshot.params['to'] || '/' //se ngm passar rota(login/"semrota") vai navegar para / que é a tela de login 
+    this.navigateTo = this.activatedRoute.snapshot.params['to'] || btoa('/') //se ngm passar rota(login/"semrota") vai navegar para / que é a tela de login 
   }
 
   login(){
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
                                 response => //HttpErrorMessage //tipo do response "segundo parametro é pra caso tiver algum erro"
                                   this.notificationService.notify(response.error.message),
                                 () =>{ //terceiro parametro é pra fazer a nevegação para outra pagina
-                                  this.router.navigate([this.navigateTo])
+                                  this.router.navigate([atob(this.navigateTo)]) //atob() decodifica contrario de btoa
                                 } )
   }
 

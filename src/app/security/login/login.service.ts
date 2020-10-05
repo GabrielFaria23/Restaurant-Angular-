@@ -23,8 +23,8 @@ export class LoginService {
     }
 
     handleLogin(path?: string){
-        this.router.navigate(['/login', path])//login = pra onde ele vai, path pagina que ele vai depois que fazer o login
-    }
+        this.router.navigate(['/login', btoa(path)])//login = pra onde ele vai, path pagina que ele vai depois que fazer o login
+    }//btoa() faz o encoding da url
 
     //assistir aula do fim pra usar o pipe no lugar do 'do'
 }
