@@ -6,21 +6,24 @@ import { MenuComponent } from "./restaurants/restaurant-detail/menu/menu.compone
 import { RestaurantDetailComponent } from "./restaurants/restaurant-detail/restaurant-detail.component";
 import { ReviewsComponent } from "./restaurants/restaurant-detail/reviews/reviews.component";
 import { RestaurantsComponent } from "./restaurants/restaurants.component";
+import { LoggedInGuard } from "./security/loggedin.guard";
 import { LoginComponent } from "./security/login/login.component";
 
 export const ROUTES: Routes = [
-    {path: '', component: LoginComponent},
+    {path: '', component: HomeComponent},
+    {path: 'login/:to', component: LoginComponent}, //:to usado pra "eu quero que voce faça o login e depois vá para essa url"
     {path: 'login', component: LoginComponent},
-    {path: 'about', loadChildren: './about/about.module#AboutModule' }, //load Children -> Utilizado para fazer caarregamento tardio, geralmente em componentes pouco utilizados
-    {path: 'restaurants', component: RestaurantsComponent},
     {path: 'restaurants/:id', component: RestaurantDetailComponent,
         children: [
             {path: '', redirectTo: 'menu', pathMatch: 'full'},
             {path: 'menu', component: MenuComponent},
             {path: 'reviews', component: ReviewsComponent}
         ]},
-    {path: 'order', loadChildren: './order/order.module#OrderModule'},
+    {path: 'restaurants', component: RestaurantsComponent},
+    {path: 'order', loadChildren: './order/order.module#OrderModule',
+     canLoad: [LoggedInGuard]},
     {path: 'order-summary', component: OrderSummaryComponent},
+    {path: 'about', loadChildren: './about/about.module#AboutModule' }, //load Children -> Utilizado para fazer caarregamento tardio, geralmente em componentes pouco utilizados
     {path: '**', component: NotFoundComponent}
 
     //a rota ** é pra caso a url informada não seja igual a nenhuma das rotas definidas, Ela sempre tem que ficar no final porque o angular adota um metodo de processamento que a
