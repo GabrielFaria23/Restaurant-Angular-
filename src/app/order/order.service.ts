@@ -5,8 +5,7 @@ import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/map'
 import { RESTAURANT_API } from "app/app.api";
 import { Order } from "./order.model";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { LoginService } from "app/security/login/login.service";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 export class OrderService {

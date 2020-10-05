@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { ErrorHandler, LOCALE_ID, NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { ROUTES } from './app.routes'
@@ -21,6 +21,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { LoginComponent } from './security/login/login.component';
 import { UserDetailComponent } from './header/user-detail/user-detail.component';
+import { ApplicationErrorHandler } from './app.error-handler';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { UserDetailComponent } from './header/user-detail/user-detail.component'
   ],
   providers: [ //RestaurantsService, ShoppingCartService, OrderService, -> Todos os Services foram removidos porque agora todos estão no privider dentro de CoreModule
                 //isso é bom pra deixar a configuração do modulo raiz bem mais enxuta.
-    {provide: LocationStrategy, useClass: HashLocationStrategy}, {provide: LOCALE_ID, useValue: 'pt-BR'} //sempre que alguem pedir o valor LOCALE_ID informe pt-BR isso é apenas para exibir dinheiro na moeda brasileira
+    {provide: LocationStrategy, useClass: HashLocationStrategy}, {provide: LOCALE_ID, useValue: 'pt-BR'}, //sempre que alguem pedir o valor LOCALE_ID informe pt-BR isso é apenas para exibir dinheiro na moeda brasileira
+    {provide: ErrorHandler, useClass: ApplicationErrorHandler}
   ],
   bootstrap: [AppComponent]
 })
