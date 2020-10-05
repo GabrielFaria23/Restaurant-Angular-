@@ -20,7 +20,7 @@ export class RestaurantsService{
         if(search){
             params = new HttpParams().set('q', search)
         }
-        return this.http.get<Restaurant[]>(`${RESTAURANT_API}/restaurantss`, {params: params}) //se utilizar um parametro tipo name: vai ter que digitar o nome inteiro pra conseguir fazer a busca 
+        return this.http.get<Restaurant[]>(`${RESTAURANT_API}/restaurants`, {params: params}) //se utilizar um parametro tipo name: vai ter que digitar o nome inteiro pra conseguir fazer a busca 
                                                                                      //corretamente, porem se colocar um parametro generico tipo 'q:' ele vai buscar em todos os atributos
                                                                                      //do restaurante tipo na descrição na categoria etc.
     }
