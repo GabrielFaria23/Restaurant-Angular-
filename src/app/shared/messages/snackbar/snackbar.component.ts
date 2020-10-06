@@ -1,10 +1,8 @@
 import { state, style, trigger, animate, transition } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/timer'
-import 'rxjs/add/operator/switchMap'
-import 'rxjs/add/operator/do'
+import { timer } from 'rxjs';
 import { NotificationService } from '../notification.service';
+import {tap, switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'mt-snackbar',
@@ -34,11 +32,15 @@ export class SnackbarComponent implements OnInit {
   constructor(private notificationService: NotificationService) { }
 
   ngOnInit() {
-    this.notificationService.notifier.subscribe(message =>{ //subscribe coloca um listener no ponto desejado e so apartir desse ponto ele notifica, do permite executar uma ação no momento em que recebe a mensagem
-      this.message = message
-      this.snackVisibility = 'visible'
-      Observable.timer(3000).subscribe(timer=> this.snackVisibility = 'hidden') // espera 3 segundos e depois some a mensagem 
-    })
+    this.notificationService.notifier
+    .pipe(
+      tap(message =>{
+        this.message = message
+        this.snackVisibility = 'visible'
+      }),
+      switchMap(message => timer(3000)) // exibe a msg por 3 segundos  
+    ).subscribe(timer => this.snackVisibility = 'hidden')
+    }
   }
 
   /*ngOnInit() {
@@ -51,8 +53,6 @@ export class SnackbarComponent implements OnInit {
        switchMap(message => timer(30000))
     ).subscribe(timer=> this.snackVisibility = 'hidden')
   } maneira correta, mas pipe não funciona*/
-
-}
 
 
 //swithMap troca o observable inteiro, ou seja da pra trocar os eventos que emitiria a partir do ponto

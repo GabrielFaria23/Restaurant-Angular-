@@ -3,11 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Restaurant } from './restaurant/restaurant.model';
 import { RestaurantsService } from './restaurants.service' 
-import 'rxjs/add/operator/debounceTime'
-import 'rxjs/add/operator/distinctUntilChanged'
-import 'rxjs/add/operator/catch'
-import 'rxjs/add/observable/from'
-import { Observable } from 'rxjs/Observable';
+
+import { from, Observable } from 'rxjs';
+import { catchError, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'mt-restaurants',
@@ -45,12 +43,14 @@ export class RestaurantsComponent implements OnInit {
       searchControl: this.searchControl
     })
     //control.valuechanges -> utilizado para ouvir o que o usuario esta digitando em um determinado campo
-    this.searchControl.valueChanges.debounceTime(500) //debouceTime so deixa emitir um evento caso a diferença de tempo entre 2 eventos for maior que a informada em ms
-    .distinctUntilChanged() // so vai emitir outro evento se a busca por exemplo for diferente da busca feita enteriormente.
-    .switchMap(searchTerm => 
-      this.restaurantsService.restaurants(searchTerm)
-      .catch(error => Observable.from([])))
-    .subscribe(restaurants => this.restaurants = restaurants)
+    this.searchControl.valueChanges
+    .pipe(
+      debounceTime(500), //debouceTime so deixa emitir um evento caso a diferença de tempo entre 2 eventos for maior que a informada em ms
+      distinctUntilChanged(), // so vai emitir outro evento se a busca por exemplo for diferente da busca feita enteriormente.
+      switchMap(searchTerm => 
+        this.restaurantsService.restaurants(searchTerm)
+        .pipe(catchError(error => from([]))))
+    ).subscribe(restaurants => this.restaurants = restaurants)
 
     this.restaurantsService.restaurants()
       .subscribe(restaurants => this.restaurants = restaurants)

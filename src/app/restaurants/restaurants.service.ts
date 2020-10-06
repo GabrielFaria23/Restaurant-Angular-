@@ -4,9 +4,7 @@ import { Restaurant } from './restaurant/restaurant.model';
 import { RESTAURANT_API } from './../../app/app.api';
 
 import { HttpClient, HttpParams } from '@angular/common/http'
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import { Observable } from 'rxjs';
 
 import { MenuItem } from './restaurant-detail/menu-item/menu-item.model';
 

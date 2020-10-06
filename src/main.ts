@@ -9,4 +9,4 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule);
+platformBrowserDynamic().bootstrapModule(AppModule);//, {preserveWhitespaces: true}); //preserva os espaços em branco em todos os componentes

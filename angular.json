@@ -79,7 +79,6 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "styles": [
-              {"input": "node_modules/font-awesome/css/font-awesome.min.css"},
               {"input": "node_modules/admin-lte/bootstrap/css/bootstrap.min.css"},
               {"input": "node_modules/admin-lte/dist/css/AdminLTE.min.css"},
               {"input": "node_modules/admin-lte/dist/css/skins/skin-red.min.css"},
