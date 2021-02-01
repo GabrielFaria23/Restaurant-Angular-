@@ -498,5 +498,17 @@
       ],
       "id": 7
     }
+  ],
+  "login": [
+    {
+      "email": "juliana@gmail.com",
+      "password": "juliana23",
+      "id": 1
+    },
+    {
+      "email": "juliana@gmail.com",
+      "password": "juliana23",
+      "id": 2
+    }
   ]
 }

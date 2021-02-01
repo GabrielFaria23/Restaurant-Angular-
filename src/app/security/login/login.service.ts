@@ -28,6 +28,8 @@ export class LoginService {
     }
 
     handleLogin(path: string = this.lastUrl){
+        console.log(path);
+        
         this.router.navigate(['/login', btoa(path)])//login = pra onde ele vai, path pagina que ele vai depois que fazer o login
     }//btoa() faz o encoding da url
 

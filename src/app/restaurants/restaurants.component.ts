@@ -53,7 +53,10 @@ export class RestaurantsComponent implements OnInit {
     ).subscribe(restaurants => this.restaurants = restaurants)
 
     this.restaurantsService.restaurants()
-      .subscribe(restaurants => this.restaurants = restaurants)
+      .subscribe(restaurants =>{
+        console.log(restaurants);        
+        this.restaurants = restaurants
+      })
     
   }
 

@@ -31,8 +31,10 @@ export class LoginComponent implements OnInit {
   login(){
     this.loginService.login(this.loginForm.value.email,
                             this.loginForm.value.password)
-                      .subscribe(user => 
-                                  this.notificationService.notify(`Bem Vindo, ${user.name}`),
+                      .subscribe(user => {
+                                  console.log(user);
+                                  
+                                  this.notificationService.notify(`Bem Vindo, ${user.name}`)},
                                 response => //HttpErrorMessage //tipo do response "segundo parametro é pra caso tiver algum erro"
                                   this.notificationService.notify(response.error.message),
                                 () =>{ //terceiro parametro é pra fazer a nevegação para outra pagina
